@@ -1,2 +1,7 @@
-![Regal demo](./Regal.gif)
-#Regal is a full-stack AI legal operations platform designed to streamline depositions and related legal workflows through real-time transcription, intelligent assistance, and faster navigation of case information.
+<p align="center">
+  <img src="./Regal.gif" alt="Regal demo" width="900">
+</p>
+
+# Regal
+
+An AI legal operations platform for streamlining depositions through real-time transcription, intelligent assistance, and faster case navigation.
