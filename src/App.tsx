@@ -20,10 +20,10 @@ const STREAM_LINES: Array<{ speaker: Speaker; text: string }> = [
     { speaker: "JUDGE", text: "Denied. Proceed." },
     { speaker: "LAWYER 2", text: "Let's turn to Exhibit 12. Do you recognize this email chain?" },
     { speaker: "WITNESS", text: "I do. That's my email address and my reply." },
-    { speaker: "LAWYER 1", text: "Before we proceed°™did you discuss meeting at a restaurant near the courthouse?" },
+    { speaker: "LAWYER 1", text: "Before we proceed‚Äîdid you discuss meeting at a restaurant near the courthouse?" },
     { speaker: "WITNESS", text: "We mentioned a cafe on Market Street, but we didn't meet there." },
     { speaker: "LAWYER 2", text: "For the record, was it a diner or a coffee shop? Any name you recall?" },
-    { speaker: "WITNESS", text: "A small diner°™no, I don't remember the name." },
+    { speaker: "WITNESS", text: "A small diner‚Äîno, I don't remember the name." },
     { speaker: "JUDGE", text: "The record will reflect the witness's answer." },
 ];
 
@@ -235,7 +235,7 @@ const STREAM_LINES: Array<{ speaker: Speaker; text: string }> = [
         return formatLegalTranscript({
             logs,
             profile,
-            caseTitle: "REGAL °™ LEGAL OPERATIONS PLATFORM",
+            caseTitle: "REGAL ‚Äî LEGAL OPERATIONS PLATFORM",
             caseNo: "Case No. 24-CV-____",
             location: "San Francisco, CA",
             proceeding: "Proceedings Transcript (Unofficial)",
@@ -357,7 +357,7 @@ const STREAM_LINES: Array<{ speaker: Speaker; text: string }> = [
         input: { border: `1px solid ${c.line}`, borderRadius: 10, padding: "9px 10px", outline: "none", width: "100%", fontWeight: 600, background: c.bg },
         select: { border: `1px solid ${c.line}`, borderRadius: 10, padding: "9px 10px", outline: "none", fontWeight: 700, background: c.bg },
 
-        // Right transcript: NO inner scroll °™ page scrolls
+        // Right transcript: NO inner scroll ‚Äî page scrolls
         chatShell: { border: `1px solid ${c.line}`, borderRadius: 12, overflow: "hidden", background: c.bg },
         chatHeader: { padding: "10px 12px", borderBottom: `1px solid ${c.line}`, display: "flex", justifyContent: "space-between", gap: 12, alignItems: "baseline" },
         chatTitle: { fontWeight: 900 },
@@ -450,7 +450,7 @@ const STREAM_LINES: Array<{ speaker: Speaker; text: string }> = [
                         <div style={styles.verifyTop}>
                             <div>
                                 <div style={{ fontWeight: 900, fontSize: 15 }}>Attorney Verification</div>
-                                <div style={{ fontSize: 12, color: c.muted, marginTop: 6 }}>Demo mode °™ prefilled for fast presentation.</div>
+                                <div style={{ fontSize: 12, color: c.muted, marginTop: 6 }}>Demo mode ‚Äî prefilled for fast presentation.</div>
                             </div>
                             {profile && <button style={styles.btn} onClick={() => setVerifyOpen(false)}>Continue</button>}
                         </div>
@@ -517,7 +517,7 @@ const STREAM_LINES: Array<{ speaker: Speaker; text: string }> = [
                         <div style={styles.modalTop}>
                             <div>
                                 <div style={styles.modalTitle}>Export Transcript</div>
-                                <div style={{ fontSize: 12, color: c.muted, marginTop: 4 }}>Court-style formatting °§ Page/line numbered</div>
+                                <div style={{ fontSize: 12, color: c.muted, marginTop: 4 }}>Court-style formatting ¬∑ Page/line numbered</div>
                             </div>
                             <div style={{ display: "flex", gap: 10, alignItems: "center" }}>
                                 <button style={{ ...styles.btn, ...styles.btnPrimary }} onClick={downloadExport}>Download .txt</button>
@@ -568,7 +568,7 @@ const STREAM_LINES: Array<{ speaker: Speaker; text: string }> = [
 
                     <div style={styles.rightTop}>
                         <div style={styles.status}>
-                            {isRunning ? "Demo transcription running" : demoDone ? "Demo complete" : "Demo ready"} °§ Ctrl/?+Enter toggle °§ Ctrl/?+K mark
+                            {isRunning ? "Demo transcription running" : demoDone ? "Demo complete" : "Demo ready"} ¬∑ Ctrl/?+Enter toggle ¬∑ Ctrl/?+K mark
                         </div>
 
                         <div style={styles.badge} onClick={() => setVerifyOpen(true)} title="Open verification" role="button">
@@ -577,7 +577,7 @@ const STREAM_LINES: Array<{ speaker: Speaker; text: string }> = [
                                 <>
                                     <span style={{ fontWeight: 900 }}>Verified</span>
                                     <span style={{ color: c.muted }}>
-                                        {profile.fullName} °§ Bar {profile.barNumber} °§ Valid thru {profile.validThrough}
+                                        {profile.fullName} ¬∑ Bar {profile.barNumber} ¬∑ Valid thru {profile.validThrough}
                                     </span>
                                 </>
                             ) : (
@@ -592,7 +592,7 @@ const STREAM_LINES: Array<{ speaker: Speaker; text: string }> = [
 
                 {/* Main */}
                 <div style={styles.grid}>
-                    {/* Left °™ sticky so you can always pause/stop */}
+                    {/* Left ‚Äî sticky so you can always pause/stop */}
                     <div style={styles.leftSticky}>
                         <div style={{ ...styles.card, ...styles.cardPad }}>
                             <div style={styles.h}>Controls</div>
@@ -630,7 +630,7 @@ const STREAM_LINES: Array<{ speaker: Speaker; text: string }> = [
                                 />
                                 <div style={styles.row}>
                                     <button style={{ ...styles.btn, ...styles.btnPrimary }} onClick={runAi} disabled={aiBusy}>
-                                        {aiBusy ? "Analyzing°≠" : "Analyze"}
+                                        {aiBusy ? "Analyzing‚Ä¶" : "Analyze"}
                                     </button>
                                     <button style={styles.btn} onClick={() => setHighlightIds(new Set())}>Clear highlights</button>
                                 </div>
@@ -648,7 +648,7 @@ const STREAM_LINES: Array<{ speaker: Speaker; text: string }> = [
                                                 <div style={styles.sceneTitleRow}>
                                                     <div style={styles.sceneTitle}>{s.title}</div>
                                                     <div style={styles.sceneMeta}>
-                                                        {fmtTime(s.startAt)} ®C {fmtTime(s.endAt)}
+                                                        {fmtTime(s.startAt)} ‚Äì {fmtTime(s.endAt)}
                                                     </div>
                                                 </div>
                                                 <div style={{ marginTop: 6, fontSize: 12, color: c.muted }}>Speakers: {s.speakers.join(", ")}</div>
@@ -663,17 +663,17 @@ const STREAM_LINES: Array<{ speaker: Speaker; text: string }> = [
                                 )}
 
                                 <div style={styles.hint}>
-                                    Demo stops after one pass. Use °∞Run Demo Again°± to replay. Press <b>Esc</b> to stop instantly.
+                                    Demo stops after one pass. Use ‚ÄúRun Demo Again‚Äù to replay. Press <b>Esc</b> to stop instantly.
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    {/* Right °™ transcript (page scrolls) */}
+                    {/* Right ‚Äî transcript (page scrolls) */}
                     <div style={styles.chatShell}>
                         <div style={styles.chatHeader}>
                             <div style={styles.chatTitle}>Proceedings Transcript</div>
-                            <div style={styles.chatMeta}>{visible.length} items °§ view: {filter === "ALL" ? "All speakers" : filter}</div>
+                            <div style={styles.chatMeta}>{visible.length} items ¬∑ view: {filter === "ALL" ? "All speakers" : filter}</div>
                         </div>
 
                         <div style={styles.chatBody}>
@@ -685,7 +685,7 @@ const STREAM_LINES: Array<{ speaker: Speaker; text: string }> = [
                                     return (
                                         <div key={m.id} style={{ margin: "10px 0" }} ref={setMsgRef(m.id)}>
                                             <div style={styles.markLine}>
-                                                °™ {m.text} °™ <span style={{ opacity: 0.75, marginLeft: 10 }}>{fmtTime(m.at)}</span>
+                                                ‚Äî {m.text} ‚Äî <span style={{ opacity: 0.75, marginLeft: 10 }}>{fmtTime(m.at)}</span>
                                             </div>
                                         </div>
                                     );
@@ -735,7 +735,7 @@ const STREAM_LINES: Array<{ speaker: Speaker; text: string }> = [
                                 style={styles.input}
                                 value={manual}
                                 onChange={(e) => setManual(e.target.value)}
-                                placeholder="Type to add to the record°≠"
+                                placeholder="Type to add to the record‚Ä¶"
                                 onKeyDown={(e) => {
                                     if (e.key === "Enter") addManual();
                                 }}
