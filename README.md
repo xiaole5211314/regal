@@ -1,6 +1,12 @@
 # Regal
 
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-Visit-2563EB?style=flat-square&logo=github)](https://xiaole5211314.github.io/regal/)
+
 An AI-powered legal operations platform that streamlines depositions through real-time transcription, intelligent assistance, and faster case navigation.
+
+## Live Demo
+
+**[xiaole5211314.github.io/regal](https://xiaole5211314.github.io/regal/)**
 
 ## Demo
 
