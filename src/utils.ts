@@ -38,7 +38,7 @@ export function speakerInitial(s: Speaker) {
   return "C";
 }
 
-export function padLeft(s: string, n: number) {
+export function padLeft(s: string | number, n: number) {
   return String(s).padStart(n, " ");
 }
 

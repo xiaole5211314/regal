@@ -1,15 +1,32 @@
-Ôªøimport { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 
 import type { Speaker, LogItem, AIScene, LawyerProfile } from "./types";
 import { LS_KEY, LS_PROFILE, uuid, clampText, fmtTime, fmtDateISO, addDaysISO, speakerInitial } from "./utils";
 import { runAssistant } from "./assistant";
 import { formatLegalTranscript } from "./formatTranscript";
 import { useMediaQuery } from "./hooks/useMediaQuery";
-}
 
 /* -------------------- App -------------------- */
 
 export default function App() {
+const STREAM_LINES: Array<{ speaker: Speaker; text: string }> = [
+    { speaker: "LAWYER 1", text: "Your Honor, for the record, we object to the characterization of the timeline." },
+    { speaker: "JUDGE", text: "Noted. Counsel, keep your questions focused." },
+    { speaker: "LAWYER 2", text: "Understood, Your Honor. Witness, did you review the contract prior to signing?" },
+    { speaker: "WITNESS", text: "Yes. I reviewed it the night before and again the morning of." },
+    { speaker: "LAWYER 2", text: "And did anyone pressure you to sign without changes?" },
+    { speaker: "WITNESS", text: "No. I had time to ask questions." },
+    { speaker: "LAWYER 1", text: "Move to strike as nonresponsive." },
+    { speaker: "JUDGE", text: "Denied. Proceed." },
+    { speaker: "LAWYER 2", text: "Let's turn to Exhibit 12. Do you recognize this email chain?" },
+    { speaker: "WITNESS", text: "I do. That's my email address and my reply." },
+    { speaker: "LAWYER 1", text: "Before we proceed°™did you discuss meeting at a restaurant near the courthouse?" },
+    { speaker: "WITNESS", text: "We mentioned a cafe on Market Street, but we didn't meet there." },
+    { speaker: "LAWYER 2", text: "For the record, was it a diner or a coffee shop? Any name you recall?" },
+    { speaker: "WITNESS", text: "A small diner°™no, I don't remember the name." },
+    { speaker: "JUDGE", text: "The record will reflect the witness's answer." },
+];
+
     const isWide = useMediaQuery("(min-width: 980px)");
 
     // Profile
@@ -218,7 +235,7 @@ export default function App() {
         return formatLegalTranscript({
             logs,
             profile,
-            caseTitle: "REGAL ‚Äî LEGAL OPERATIONS PLATFORM",
+            caseTitle: "REGAL °™ LEGAL OPERATIONS PLATFORM",
             caseNo: "Case No. 24-CV-____",
             location: "San Francisco, CA",
             proceeding: "Proceedings Transcript (Unofficial)",
@@ -278,7 +295,7 @@ export default function App() {
         hiLine: "rgba(29,78,216,.30)",
     };
 
-    const styles: Record<string, React.CSSProperties> = {
+    const styles: Record<string, any> = {
         page: { minHeight: "100vh", background: c.bg, color: c.ink, fontFamily: "system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial" },
         container: { maxWidth: 1240, margin: "0 auto", padding: 16 },
 
@@ -340,7 +357,7 @@ export default function App() {
         input: { border: `1px solid ${c.line}`, borderRadius: 10, padding: "9px 10px", outline: "none", width: "100%", fontWeight: 600, background: c.bg },
         select: { border: `1px solid ${c.line}`, borderRadius: 10, padding: "9px 10px", outline: "none", fontWeight: 700, background: c.bg },
 
-        // Right transcript: NO inner scroll ‚Äî page scrolls
+        // Right transcript: NO inner scroll °™ page scrolls
         chatShell: { border: `1px solid ${c.line}`, borderRadius: 12, overflow: "hidden", background: c.bg },
         chatHeader: { padding: "10px 12px", borderBottom: `1px solid ${c.line}`, display: "flex", justifyContent: "space-between", gap: 12, alignItems: "baseline" },
         chatTitle: { fontWeight: 900 },
@@ -433,7 +450,7 @@ export default function App() {
                         <div style={styles.verifyTop}>
                             <div>
                                 <div style={{ fontWeight: 900, fontSize: 15 }}>Attorney Verification</div>
-                                <div style={{ fontSize: 12, color: c.muted, marginTop: 6 }}>Demo mode ‚Äî prefilled for fast presentation.</div>
+                                <div style={{ fontSize: 12, color: c.muted, marginTop: 6 }}>Demo mode °™ prefilled for fast presentation.</div>
                             </div>
                             {profile && <button style={styles.btn} onClick={() => setVerifyOpen(false)}>Continue</button>}
                         </div>
@@ -500,7 +517,7 @@ export default function App() {
                         <div style={styles.modalTop}>
                             <div>
                                 <div style={styles.modalTitle}>Export Transcript</div>
-                                <div style={{ fontSize: 12, color: c.muted, marginTop: 4 }}>Court-style formatting ¬∑ Page/line numbered</div>
+                                <div style={{ fontSize: 12, color: c.muted, marginTop: 4 }}>Court-style formatting °§ Page/line numbered</div>
                             </div>
                             <div style={{ display: "flex", gap: 10, alignItems: "center" }}>
                                 <button style={{ ...styles.btn, ...styles.btnPrimary }} onClick={downloadExport}>Download .txt</button>
@@ -551,7 +568,7 @@ export default function App() {
 
                     <div style={styles.rightTop}>
                         <div style={styles.status}>
-                            {isRunning ? "Demo transcription running" : demoDone ? "Demo complete" : "Demo ready"} ¬∑ Ctrl/‚åò+Enter toggle ¬∑ Ctrl/‚åò+K mark
+                            {isRunning ? "Demo transcription running" : demoDone ? "Demo complete" : "Demo ready"} °§ Ctrl/?+Enter toggle °§ Ctrl/?+K mark
                         </div>
 
                         <div style={styles.badge} onClick={() => setVerifyOpen(true)} title="Open verification" role="button">
@@ -560,7 +577,7 @@ export default function App() {
                                 <>
                                     <span style={{ fontWeight: 900 }}>Verified</span>
                                     <span style={{ color: c.muted }}>
-                                        {profile.fullName} ¬∑ Bar {profile.barNumber} ¬∑ Valid thru {profile.validThrough}
+                                        {profile.fullName} °§ Bar {profile.barNumber} °§ Valid thru {profile.validThrough}
                                     </span>
                                 </>
                             ) : (
@@ -575,7 +592,7 @@ export default function App() {
 
                 {/* Main */}
                 <div style={styles.grid}>
-                    {/* Left ‚Äî sticky so you can always pause/stop */}
+                    {/* Left °™ sticky so you can always pause/stop */}
                     <div style={styles.leftSticky}>
                         <div style={{ ...styles.card, ...styles.cardPad }}>
                             <div style={styles.h}>Controls</div>
@@ -613,7 +630,7 @@ export default function App() {
                                 />
                                 <div style={styles.row}>
                                     <button style={{ ...styles.btn, ...styles.btnPrimary }} onClick={runAi} disabled={aiBusy}>
-                                        {aiBusy ? "Analyzing‚Ä¶" : "Analyze"}
+                                        {aiBusy ? "Analyzing°≠" : "Analyze"}
                                     </button>
                                     <button style={styles.btn} onClick={() => setHighlightIds(new Set())}>Clear highlights</button>
                                 </div>
@@ -631,7 +648,7 @@ export default function App() {
                                                 <div style={styles.sceneTitleRow}>
                                                     <div style={styles.sceneTitle}>{s.title}</div>
                                                     <div style={styles.sceneMeta}>
-                                                        {fmtTime(s.startAt)} ‚Äì {fmtTime(s.endAt)}
+                                                        {fmtTime(s.startAt)} ®C {fmtTime(s.endAt)}
                                                     </div>
                                                 </div>
                                                 <div style={{ marginTop: 6, fontSize: 12, color: c.muted }}>Speakers: {s.speakers.join(", ")}</div>
@@ -646,17 +663,17 @@ export default function App() {
                                 )}
 
                                 <div style={styles.hint}>
-                                    Demo stops after one pass. Use ‚ÄúRun Demo Again‚Äù to replay. Press <b>Esc</b> to stop instantly.
+                                    Demo stops after one pass. Use °∞Run Demo Again°± to replay. Press <b>Esc</b> to stop instantly.
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    {/* Right ‚Äî transcript (page scrolls) */}
+                    {/* Right °™ transcript (page scrolls) */}
                     <div style={styles.chatShell}>
                         <div style={styles.chatHeader}>
                             <div style={styles.chatTitle}>Proceedings Transcript</div>
-                            <div style={styles.chatMeta}>{visible.length} items ¬∑ view: {filter === "ALL" ? "All speakers" : filter}</div>
+                            <div style={styles.chatMeta}>{visible.length} items °§ view: {filter === "ALL" ? "All speakers" : filter}</div>
                         </div>
 
                         <div style={styles.chatBody}>
@@ -668,7 +685,7 @@ export default function App() {
                                     return (
                                         <div key={m.id} style={{ margin: "10px 0" }} ref={setMsgRef(m.id)}>
                                             <div style={styles.markLine}>
-                                                ‚Äî {m.text} ‚Äî <span style={{ opacity: 0.75, marginLeft: 10 }}>{fmtTime(m.at)}</span>
+                                                °™ {m.text} °™ <span style={{ opacity: 0.75, marginLeft: 10 }}>{fmtTime(m.at)}</span>
                                             </div>
                                         </div>
                                     );
@@ -718,7 +735,7 @@ export default function App() {
                                 style={styles.input}
                                 value={manual}
                                 onChange={(e) => setManual(e.target.value)}
-                                placeholder="Type to add to the record‚Ä¶"
+                                placeholder="Type to add to the record°≠"
                                 onKeyDown={(e) => {
                                     if (e.key === "Enter") addManual();
                                 }}
