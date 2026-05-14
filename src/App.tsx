@@ -568,7 +568,7 @@ const STREAM_LINES: Array<{ speaker: Speaker; text: string }> = [
 
                     <div style={styles.rightTop}>
                         <div style={styles.status}>
-                            {isRunning ? "Demo transcription running" : demoDone ? "Demo complete" : "Demo ready"} · Ctrl/?+Enter toggle · Ctrl/?+K mark
+                            {isRunning ? "Demo transcription running" : demoDone ? "Demo complete" : "Demo ready"} · Ctrl/⌘+Enter toggle · Ctrl/⌘+K mark
                         </div>
 
                         <div style={styles.badge} onClick={() => setVerifyOpen(true)} title="Open verification" role="button">

@@ -40,15 +40,22 @@ npm run dev
 ## Project Structure
 
 ```
-├── server/          # Backend API (Express)
-│   ├── server.js
-│   └── package.json
-├── src/             # React frontend
-│   ├── App.tsx
+├── src/                    # React frontend
+│   ├── App.tsx             # Main UI — transcript, controls, modals
+│   ├── assistant.ts        # Keyword search over the transcript
+│   ├── formatTranscript.ts # Court-style .txt export formatting
+│   ├── types.ts            # Shared types
+│   ├── utils.ts            # Helpers (ids, time/date formatting, text wrap)
+│   ├── hooks/              # useMediaQuery, useLocalStorage
 │   ├── main.tsx
 │   ├── index.css
-│   └── assets/
+│   └── App.css
+├── server/                 # Deepgram transcription backend (Express)
+│   ├── server.js           # POST /api/transcribe — proxies audio to Deepgram
+│   ├── .env.example        # Copy to .env, then set DEEPGRAM_API_KEY
+│   └── package.json
 ├── public/
+├── index.html
 ├── package.json
 ├── vite.config.ts
 └── tsconfig.json
